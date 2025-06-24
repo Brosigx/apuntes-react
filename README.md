@@ -59,28 +59,93 @@ Por otra parte, si queremos realizar el despliegue de nuestro código y generar 
 npm run build
 ```
 
-Una vez hayamos desplegado el proyecto, lo primero en lo que podemos fijarnos, es que dentro de la carpeta assets, nos encontramos con unos ficheros "raros" con un nombre largo. Estos ficheros son los "bundle", que son el resultado de lo que hace un bundler, con 3 procesos principales:
+Para el despliegue de nuestra aplicación, vamos a utilizar **WSL**. Es decir, vamos a desplegar los ficheros dentro de una terminal Linux en Windows, mientras que la edición de código la haremos en VS Code de manera remota desde Windows.
 
-1- Hacerlo más pequeño.
-2- Uglifiying o hacerlo más feo, resultado de transpilar el código, para que cualquier persona que quiera ver qué hace el código, no pueda verlo.
-3- Tree shaking. Podemos entenderlo como una analogía de sacudir el arbol, es decir, va a quitar todas las partes del código que no se usan.
+Como herramienta de desarrollo, vamos a utilizar **Vite**, que nos permite arrancar el servidor de desarrollo y compilar/transpilar nuestro código de forma rápida. Vite sustituye a herramientas anteriores como *create-react-app* o *Webpack*.
 
-Una vez vistos estos conceptos iniciales, tenemos que hablar de la parte pública y la parte privada. La parte pública del proyecto es aquella en la que cualquier persona puede acceder, es decir, es la parte del cliente que es rendereizada desde el navegador web. Por otra parte, tenemos la parte privada, en la que solo pueden acceder las personas con roles (logueadas). NUestro browser solo va a cargar la parte pública, lo que nos va a facilitar a nuestro navegador de que solo tenga que renderizar una parte del código. Esta separación tambien nos brinda seguridad, puesto que el navegador no va a renderizar la parte privada, por lo que nadie podrá ver el código de este, puesto que no se renderiza.
+### 🚀 Pasos para crear y arrancar el proyecto
 
-IMPORTACIÓN DE MÓDULOS
+1. **Crear el proyecto con Vite:**
+    ```bash
+    npm create vite@latest
+    ```
 
-Lo primero en lo que podemos fijarnos es en la manera en la que se importan los módulos. El uso de vite nos permite utiliar los plugins, para pòder utilizar distintas zonas de React, por ejemplo, si quisieramos hacer testing, solo tendriamos que utilizar el plugin de testing. (ejemplo código)
+2. **Instalar dependencias:**
+    ```bash
+    npm install
+    ```
 
+3. **Arrancar el servidor de desarrollo:**
+    ```bash
+    npm run dev
+    ```
+    El segundo comando nos permitirá ver el proyecto en local y recargar los cambios automáticamente.
+
+### 🏗️ Generar el build para producción
+
+Si queremos realizar el despliegue de nuestro código y generar la carpeta `dist` con los archivos optimizados y listos para producción, ejecutamos:
+
+```bash
+npm run build
+```
+
+### 📦 ¿Qué ocurre tras el build?
+
+Dentro de la carpeta `assets` aparecerán ficheros con nombres largos y "raros". Estos son los *bundles*, resultado del proceso de empaquetado (*bundling*), que incluye:
+
+1. **Minificación:** Hacer los archivos más pequeños.
+2. **Uglifying:** Hacer el código menos legible (transpilado), dificultando su lectura para terceros.
+3. **Tree shaking:** Eliminar el código que no se utiliza.
+
+### 🔒 Parte pública y privada
+
+- **Parte pública:** Es la parte del proyecto accesible para cualquier usuario, es decir, el cliente que se renderiza en el navegador web.
+- **Parte privada:** Solo accesible para usuarios autenticados (con roles). El navegador solo carga la parte pública, lo que mejora la seguridad y el rendimiento.
+
+### 📥 Importación de módulos
+
+Vite permite utilizar plugins para ampliar funcionalidades, como testing, añadiendo solo el plugin necesario.
+
+**Ejemplo de importaciones en React:**
+```tsx
 import { useState } from 'react'
-//import reactLogo from './assets/react.svg'
-//import viteLogo from '/vite.svg'
+// import reactLogo from './assets/react.svg'
+// import viteLogo from '/vite.svg'
 import './App.css'
 import './Button.css'
+```
 
-Si nos fijamos ahor adentro de nuestro fichero main.tsx, podemos encontrar la declaración StrictMode. ¿Qué hace esta declaración? Se encarga de la doble renderización de los componentes. Lo hace creando un componente por primera vez, luego lo destruirá, y luego se creará otra vez, para posteriormente comporbar que funciona de la misma manera antes y después de haber sido destruido.
+En el archivo `main.tsx` encontramos la declaración de `StrictMode`:
 
-<StrictMode>  
+```tsx
+<StrictMode>
+  <App />
+</StrictMode>
+```
+`StrictMode` se encarga de la doble renderización de los componentes para comprobar que funcionan igual antes y después de ser destruidos y creados de nuevo.
+
+También importamos desde `react-dom/client` para renderizar el elemento raíz:
+
+```tsx
+import { createRoot } from 'react-dom/client'
+
+createRoot(document.getElementById('root')!).render(
+  <StrictMode>
     <App />
-  </StrictMode>,
+  </StrictMode>
+)
+```
+El símbolo `!` en `getElementById('root')!` es para indicar a TypeScript que ese elemento existe (non-null assertion).
 
+### 🧩 Componentes e importaciones
+
+Los componentes en React son funciones que se pueden exportar e importar en otros archivos según se necesiten.  
+Las importaciones pueden hacerse de dos formas:
+- Importando todo el módulo.
+- Importando solo los elementos concretos que se necesitan, usando llaves.
+
+```tsx
+import { createRoot } from 'react-dom/client'
+import './index.css'
+```
 
