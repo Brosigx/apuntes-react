@@ -4,7 +4,9 @@ import './index.css'
 import App from './App.tsx'
 
 createRoot(document.getElementById('root')!).render(
-  <StrictMode>
+  <StrictMode>  
     <App />
   </StrictMode>,
 )
+
+//LOS CABRONES DE META NO QUIEREN QUE USES MAS EL CREATE-REACT, ESTA DEPRECATED
