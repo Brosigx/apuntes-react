@@ -15,7 +15,7 @@ más avanzado. Todos los apuntes se han tomado en comentarios dentro del código
 - 🎨 **CSS** - Para definir y aplicar estilos visuales a los componentes.
 ---
 
-## 📂 Estructura del repositorio
+## 📂 Estructura del repositorio (pendiente de actualizar)
 
 ```bash
 .
@@ -28,43 +28,28 @@ más avanzado. Todos los apuntes se han tomado en comentarios dentro del código
 └── README.md          # Este documento ✨
 
 ```
+---
 
 ## 📚 Capítulos del curso
 
 Aquí se irá desglosando todo lo aprendido capítulo a capítulo. Cada uno contendrá un resumen teórico, enlaces al código correspondiente y posibles recursos adicionales.
 
-### 📘 Capítulo 1 - Introducción a React
-<!-- Explicación general, por qué React, características clave... -->
+### 📘 Capítulo 1 - Creación y despliegue del proyecto.
+
+Para el despliegue de nuestra aplicación, vamos a utilizar WSL, es decir, vamos
+a desplegar los ficheros dentro de una terminal Linux dentro de Windows, a la vez que la edición de código la haremos en VScode de manera remota desde Windows.
+
+Como herramienta de desarrollo, vamos a utilizar Vite, que nos va a permitir arrancar el servidor de desarrollo, y compilar/transpilar nuestro código de forma rápida. Sustituye al anterior create-react-app o Webpack.
+
+Para desplegar el proyecto, simplement usaremos el comando npm create vite@latest. Una vez que tengamos el proyecto creado, procederemos a su instalacion y run dev.
+
+
+Una vez hecho todo esto, podemos desplegar la aplicación, ejecutando un comando build.
 
 ### 🧱 Capítulo 2 - Crear el proyecto con Vite + TypeScript
 <!-- Explicación del setup inicial, estructura del proyecto... -->
 
-### ⚛️ Capítulo 3 - JSX y Componentes
-<!-- Qué es JSX, cómo crear componentes, diferencias entre funciones y clases... -->
 
-### 🎯 Capítulo 4 - Props y Estado
-<!-- Cómo funcionan las props, el estado con useState, ejemplos... -->
-
-### 🔄 Capítulo 5 - Ciclo de vida y useEffect
-<!-- Introducción a useEffect, dependencias, ciclo de vida simulado... -->
-
-### 🔗 Capítulo 6 - Eventos y manejo de formularios
-<!-- onClick, onChange, ejemplos con inputs y formularios controlados... -->
-
-### 🧠 Capítulo 7 - Hooks personalizados
-<!-- Crear tus propios hooks reutilizables, ejemplos... -->
-
-### 📦 Capítulo 8 - Manejo de datos y APIs
-<!-- fetch, async/await, manejo de respuestas, loading y errores... -->
-
-### 🧭 Capítulo 9 - React Router
-<!-- Rutas, navegación entre vistas, parámetros, rutas anidadas... -->
-
-### 🧼 Capítulo 10 - Buenas prácticas y organización del código
-<!-- Nombres, estructura, componentes reutilizables, estilos, etc... -->
-
-### 🚀 Capítulo 11 - Despliegue y entorno de producción
-<!-- Cómo preparar la app para producción, Vite build, Netlify, Vercel... -->
 
 ---
 
