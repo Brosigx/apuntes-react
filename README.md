@@ -19,7 +19,7 @@ explicando qué se va a ir haciendo en cada apartado.
 ## 📚 Índice de capítulos
 
 - [📘 Capítulo 1 - Creación y despliegue del proyecto]
-- [🧱 Capítulo 2 - Crear el proyecto con Vite + TypeScript]
+- [🧱 Capítulo 2 - Detección de cambios]
 - [⚛️ Capítulo 3 - JSX y Componentes]
 - [📦 Capítulo 4 - Props y Estado]
 - [🔄 Capítulo 5 - Ciclo de vida y useEffect]
@@ -149,3 +149,12 @@ import { createRoot } from 'react-dom/client'
 import './index.css'
 ```
 
+Tenemos que tener en cuenta que las importaciones por defecto deben usarse solo en casos muy específicos, ya que estaríamos importando absolutamente todo el módulo, incluyendo partes que quizás no necesitamos. Esto puede afectar al rendimiento y aumentar el tamaño final del bundle.
+
+Por eso, es recomendable importar únicamente los elementos concretos que vamos a utilizar, usando llaves ({}), para mantener el código más limpio y eficiente.
+
+Este tipo de arquitectura se conoce como SPA (Single Page Application), es decir, una aplicación de página única. Todo se renderiza sobre una única página (el mismo index.html), pero solo se actualizan las partes necesarias de la interfaz, sin recargar toda la página. Esto mejora la experiencia de usuario y el rendimiento de la aplicación.
+
+---
+
+## 📘 Capítulo 2 - Detección de cambios
