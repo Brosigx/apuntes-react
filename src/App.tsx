@@ -62,6 +62,7 @@ function App() {
     */
 
     //Quitamos todo el estilo del boton, porque lo correcto es crear un componente Button
+    //Este metodo se considera un METODO INTELIGENTE, YA QUE HACE LAS COSAS EL.
     <>
       
       <button className="Boton personalizado" /*style={color: "Blue", backgroundColor:"green" style.button}*/onClick={() => setCount((count) => count + 1)}>
